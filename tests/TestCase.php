@@ -3,8 +3,8 @@
 namespace Mgcodeur\AuthMaster\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Mgcodeur\AuthMaster\AuthMasterServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

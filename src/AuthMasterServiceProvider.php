@@ -2,9 +2,9 @@
 
 namespace Mgcodeur\AuthMaster;
 
+use Mgcodeur\AuthMaster\Commands\AuthMasterCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mgcodeur\AuthMaster\Commands\AuthMasterCommand;
 
 class AuthMasterServiceProvider extends PackageServiceProvider
 {
