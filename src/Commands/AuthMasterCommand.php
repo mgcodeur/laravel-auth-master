@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Mgcodeur\AuthMaster\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class AuthMasterCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-auth-master';
 
     public $description = 'My command';
 
