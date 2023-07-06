@@ -9,8 +9,6 @@ trait AuthenticatableAuthMasterTrait
      * 1. fillable: first_name, last_name, email, password, is_online, last_connection
      * 2. this method is available on class: Mgcodeur\AuthMaster\AuthMaster
      * 3. test
-     * @param array $data
-     * @return array
      */
     public static function createUserAndGenerateAccessToken(array $data): array
     {
