@@ -1,6 +1,8 @@
 <?php
 
-// config for Mgcodeur/AuthMaster
 return [
-
+    'auth' => [
+        'model' => 'App\Models\User',
+        'table' => 'users',
+    ],
 ];

@@ -2,9 +2,10 @@
 
 namespace Mgcodeur\AuthMaster;
 
+use Illuminate\Support\Facades\Route;
+use Mgcodeur\AuthMaster\Commands\AuthMasterCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mgcodeur\AuthMaster\Commands\AuthMasterCommand;
 
 class AuthMasterServiceProvider extends PackageServiceProvider
 {
@@ -17,9 +18,19 @@ class AuthMasterServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-auth-master')
-            ->hasConfigFile()
+            ->hasConfigFile('auth-master')
             ->hasViews()
-            ->hasMigration('create_laravel-auth-master_table')
+            ->hasRoutes(['api'])
+            ->hasMigrations(['alter_users_table'])
             ->hasCommand(AuthMasterCommand::class);
+    }
+
+    public function packageBooted(): void
+    {
+        Route::prefix('api')->middleware('api')->group(function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
+
+        AuthMaster::setAuthModel(config('auth-master.auth.model'));
     }
 }
