@@ -1,6 +1,6 @@
 {
   "name": "laravel-auth-master",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "changelog": "auto-changelog -p && git add CHANGELOG.md"
   },
