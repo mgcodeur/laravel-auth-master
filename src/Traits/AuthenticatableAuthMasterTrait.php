@@ -2,6 +2,9 @@
 
 namespace Mgcodeur\AuthMaster\Traits;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
 trait AuthenticatableAuthMasterTrait
 {
     /**
@@ -10,13 +13,17 @@ trait AuthenticatableAuthMasterTrait
      * 2. this method is available on class: Mgcodeur\AuthMaster\AuthMaster
      * 3. test
      */
-    public static function createUserAndGenerateAccessToken(array $data): array
+    public static function createUserAndGenerateAccessToken(array $data): Model
     {
-        $model = _getAuthMasterModel();
-        $user = $model::create($data);
+        $user = self::$authModel::create($data);
 
-        return [
-            'access_token' => $user->createToken('auth')->accessToken,
-        ];
+        $user->update([
+            'is_online' => true,
+            'last_connection' => Carbon::now(),
+        ]);
+
+        $user->access_token = $user->createToken('auth')->accessToken;
+
+        return $user;
     }
 }
